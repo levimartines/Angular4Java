@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TaskService} from "../task.service";
 import {Task} from "../task.model";
 
@@ -11,6 +11,7 @@ import {Task} from "../task.model";
 export class TasksAddComponent implements OnInit {
 
     addTaskValue: string = null;
+    @Output() taskAdded = new EventEmitter<Task>();
 
     constructor(private taskService: TaskService) {
     }
@@ -23,7 +24,7 @@ export class TasksAddComponent implements OnInit {
         this.taskService.insertTask(task).subscribe(
             (newTask: Task) => {
                 this.addTaskValue = '';
-                this.taskService.onTaskAdded.emit(newTask);
+                this.taskAdded.emit(newTask);
             }
         );
     }

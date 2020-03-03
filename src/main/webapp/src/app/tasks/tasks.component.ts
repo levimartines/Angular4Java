@@ -1,15 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {TasksListComponent} from "./tasks-list/tasks-list.component";
 
 @Component({
-  selector: 'app-tasks',
-  templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+    selector: 'app-tasks',
+    templateUrl: './tasks.component.html',
+    styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
 
-  constructor() { }
+    @ViewChild(TasksListComponent, {static: false}) taskList: TasksListComponent;
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
+
+    onTaskAdded(task) {
+        this.taskList.tasks.push(task);
+    }
+
+    ngOnInit() {
+    }
 
 }

@@ -9,7 +9,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <app-tasks-add></app-tasks-add>
+                        <app-tasks-add (taskAdded)="onTaskAdded($event)"></app-tasks-add>
                     </div>
                 </div>
 
