@@ -25,6 +25,10 @@ export class TasksAddComponent implements OnInit {
             (newTask: Task) => {
                 this.addTaskValue = '';
                 this.taskAdded.emit(newTask);
+            },
+            error => {
+                this.addTaskValue = '';
+                console.log(error);
             }
         );
     }
