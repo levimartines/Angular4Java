@@ -22,7 +22,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.listTasks());
     }
 
-    @PostMapping
+    @PostMapping(value = "save")
     public ResponseEntity<?> save(@RequestBody Task task){
         return ResponseEntity.ok(taskService.save(task));
     }
